@@ -18,11 +18,6 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 /**
  * @author JoanMR
  */
@@ -388,7 +383,52 @@ public class Principal {
                 nombre_juego.pack();
             }
             if (evento.getSource() == iconoConfiguracion) {
+                    final JFrame configuracion_partida = new JFrame("CONFIGURACION DE LA PARTIDA");
+                    Container contenidos_configuracion = configuracion_partida.getContentPane();
+                    contenidos_configuracion.setLayout(new BorderLayout());
 
+                    // Crear un nuevo JPanel con un GridLayout.
+                    JPanel buttonPanel = new JPanel(new GridLayout(1, 3, 10, 10)); // 1 fila, 3 columnas, 10 pixels de espacio horizontal y vertical
+                    buttonPanel.setBackground(Color.BLACK);
+
+                    // Crear los botones.
+                    JButton botonConfiguracionEspecifica = new JButton("CONFIGURACIÓN ESPECIFICA JUEGO");
+                    JButton botonModificarTiempo = new JButton("MODIFCAR TIEMPO PARTIDA");
+                    JButton botonNada = new JButton("NADA");
+
+                    // Añadir un ActionListener al botón "NADA" para cerrar la ventana emergente.
+                    botonNada.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            configuracion_partida.dispose();
+                        }
+                    });
+
+                    // Añadir los botones al panel.
+                    buttonPanel.add(botonConfiguracionEspecifica);
+                    buttonPanel.add(botonModificarTiempo);
+                    buttonPanel.add(botonNada);
+
+                    // Añadir un margen alrededor del panel de botones.
+                    buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 10 pixels de margen en todos los lados
+                    configuracion_partida.add(buttonPanel, BorderLayout.SOUTH);
+
+                    // Crear el icono y la etiqueta.
+                    ImageIcon icono = new ImageIcon("iconoInformacion.jpg"); // Asegúrate de que esta ruta de archivo es correcta.
+                    JLabel etiquetaConIcono = new JLabel(" ¿ QUÉ DESEAS REALIZAR ? ", icono, JLabel.LEFT);
+
+                    etiquetaConIcono.setOpaque(true);
+                    etiquetaConIcono.setBackground(Color.BLACK);
+                    etiquetaConIcono.setForeground(Color.YELLOW);
+                    etiquetaConIcono.setFont(new Font("Arial", Font.BOLD, 14));
+                    contenidos_configuracion.add(etiquetaConIcono, BorderLayout.NORTH);
+                    
+                    info= false;
+                    visualizador.repaint();
+                    configuracion_partida.setVisible(true);
+                    configuracion_partida.setResizable(false);
+                    configuracion_partida.setLocationRelativeTo(null);
+                    configuracion_partida.pack();
 
             }
             if (evento.getSource() == iconoHistorial) {

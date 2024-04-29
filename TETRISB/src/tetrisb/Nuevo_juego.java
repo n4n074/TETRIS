@@ -22,8 +22,8 @@ public class Nuevo_juego extends JFrame implements MouseMotionListener,MouseList
     private boolean DESPLAZAMIENTO=false;
     private Tablero tablero;  
     //Este desfase es para pillar la imagen
-    private static final int DESFASE_X=15,DESFASE_Y=15;
-    private static final int COORDENADA_X_INICIAL=1300,COORDENADA_Y_INICIAL=500;
+    private static final int DESFASE_X=200,DESFASE_Y=200;
+    private static final int COORDENADA_X_INICIAL=1000,COORDENADA_Y_INICIAL=300;
     
     public Nuevo_juego(){
         super("Juego jugable");
@@ -50,7 +50,7 @@ public class Nuevo_juego extends JFrame implements MouseMotionListener,MouseList
         if (DESPLAZAMIENTO) {
             tablero.setCoordX(evento.getX());
             tablero.setCoordY(evento.getY());
-            //repaint();
+            repaint();
         }
     }
     
@@ -118,4 +118,15 @@ public class Nuevo_juego extends JFrame implements MouseMotionListener,MouseList
             repaint();  
         }
     }
+
+    @Override
+    public void mouseEntered(MouseEvent evento) {}
+
+    @Override
+    public void mouseExited(MouseEvent evento) {}
+    
+    public static void main(String[] args) {
+        Nuevo_juego taller = new Nuevo_juego();
+    }
+
 }
